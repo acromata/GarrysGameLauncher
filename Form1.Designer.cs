@@ -32,13 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GGLauncher));
             LogoImage = new PictureBox();
             LaunchButton = new Button();
-            DesktopShortcutButton = new PictureBox();
             toolTip1 = new ToolTip(components);
             DownloadProgressBar = new ProgressBar();
             ProgessLabel = new Label();
             VersionText = new Label();
+            MenuButton = new Label();
+            SettingsPanel = new Panel();
+            VerifyGameFilesTxt = new Label();
+            OpenGameFilesTxt = new Label();
+            AddDesktopShortcutTxt = new Label();
             ((System.ComponentModel.ISupportInitialize)LogoImage).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DesktopShortcutButton).BeginInit();
+            SettingsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // LogoImage
@@ -65,21 +69,6 @@
             LaunchButton.Text = "Launch";
             LaunchButton.UseVisualStyleBackColor = true;
             LaunchButton.Click += LaunchButton_Click;
-            // 
-            // DesktopShortcutButton
-            // 
-            DesktopShortcutButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            DesktopShortcutButton.BackColor = Color.Transparent;
-            DesktopShortcutButton.BackgroundImageLayout = ImageLayout.Zoom;
-            DesktopShortcutButton.Image = (Image)resources.GetObject("DesktopShortcutButton.Image");
-            DesktopShortcutButton.Location = new Point(34, 486);
-            DesktopShortcutButton.Name = "DesktopShortcutButton";
-            DesktopShortcutButton.Size = new Size(43, 46);
-            DesktopShortcutButton.SizeMode = PictureBoxSizeMode.Zoom;
-            DesktopShortcutButton.TabIndex = 2;
-            DesktopShortcutButton.TabStop = false;
-            toolTip1.SetToolTip(DesktopShortcutButton, "Create Desktop Shortcut");
-            DesktopShortcutButton.Click += DesktopShortcutButton_Click;
             // 
             // DownloadProgressBar
             // 
@@ -111,11 +100,73 @@
             VersionText.BackColor = Color.Transparent;
             VersionText.Font = new Font("Segoe UI", 12F);
             VersionText.ForeColor = SystemColors.ControlLightLight;
-            VersionText.Location = new Point(986, 560);
+            VersionText.Location = new Point(617, 286);
             VersionText.Name = "VersionText";
             VersionText.Size = new Size(51, 21);
             VersionText.TabIndex = 5;
             VersionText.Text = "v1.0.0";
+            // 
+            // MenuButton
+            // 
+            MenuButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            MenuButton.AutoSize = true;
+            MenuButton.BackColor = Color.Transparent;
+            MenuButton.Font = new Font("Segoe UI", 32F);
+            MenuButton.ForeColor = SystemColors.ControlLightLight;
+            MenuButton.Location = new Point(996, 0);
+            MenuButton.Name = "MenuButton";
+            MenuButton.Size = new Size(52, 59);
+            MenuButton.TabIndex = 6;
+            MenuButton.Text = "...";
+            MenuButton.Click += MenuButton_Click;
+            // 
+            // SettingsPanel
+            // 
+            SettingsPanel.BackColor = Color.Transparent;
+            SettingsPanel.Controls.Add(VerifyGameFilesTxt);
+            SettingsPanel.Controls.Add(OpenGameFilesTxt);
+            SettingsPanel.Controls.Add(AddDesktopShortcutTxt);
+            SettingsPanel.Location = new Point(883, 62);
+            SettingsPanel.Name = "SettingsPanel";
+            SettingsPanel.Size = new Size(154, 100);
+            SettingsPanel.TabIndex = 7;
+            SettingsPanel.Visible = false;
+            // 
+            // VerifyGameFilesTxt
+            // 
+            VerifyGameFilesTxt.AutoSize = true;
+            VerifyGameFilesTxt.BackColor = Color.WhiteSmoke;
+            VerifyGameFilesTxt.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            VerifyGameFilesTxt.Location = new Point(1, 56);
+            VerifyGameFilesTxt.Name = "VerifyGameFilesTxt";
+            VerifyGameFilesTxt.Size = new Size(152, 19);
+            VerifyGameFilesTxt.TabIndex = 5;
+            VerifyGameFilesTxt.Text = "Verify Game Files       ";
+            VerifyGameFilesTxt.Click += VerifyGameFilesTxt_Click;
+            // 
+            // OpenGameFilesTxt
+            // 
+            OpenGameFilesTxt.AutoSize = true;
+            OpenGameFilesTxt.BackColor = Color.WhiteSmoke;
+            OpenGameFilesTxt.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            OpenGameFilesTxt.Location = new Point(1, 28);
+            OpenGameFilesTxt.Name = "OpenGameFilesTxt";
+            OpenGameFilesTxt.Size = new Size(153, 19);
+            OpenGameFilesTxt.TabIndex = 4;
+            OpenGameFilesTxt.Text = "Open Game Files        ";
+            OpenGameFilesTxt.Click += OpenGameFilesTxt_Click;
+            // 
+            // AddDesktopShortcutTxt
+            // 
+            AddDesktopShortcutTxt.AutoSize = true;
+            AddDesktopShortcutTxt.BackColor = Color.WhiteSmoke;
+            AddDesktopShortcutTxt.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            AddDesktopShortcutTxt.Location = new Point(-1, 0);
+            AddDesktopShortcutTxt.Name = "AddDesktopShortcutTxt";
+            AddDesktopShortcutTxt.Size = new Size(156, 19);
+            AddDesktopShortcutTxt.TabIndex = 3;
+            AddDesktopShortcutTxt.Text = "Add Desktop Shortcut";
+            AddDesktopShortcutTxt.Click += AddDesktopShortcutTxt_Click;
             // 
             // GGLauncher
             // 
@@ -125,17 +176,19 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1048, 588);
+            Controls.Add(SettingsPanel);
+            Controls.Add(MenuButton);
             Controls.Add(VersionText);
             Controls.Add(ProgessLabel);
             Controls.Add(DownloadProgressBar);
-            Controls.Add(DesktopShortcutButton);
             Controls.Add(LaunchButton);
             Controls.Add(LogoImage);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "GGLauncher";
             Text = "Garry's Game Launcher";
             ((System.ComponentModel.ISupportInitialize)LogoImage).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DesktopShortcutButton).EndInit();
+            SettingsPanel.ResumeLayout(false);
+            SettingsPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -144,10 +197,14 @@
 
         private PictureBox LogoImage;
         private Button LaunchButton;
-        private PictureBox DesktopShortcutButton;
         private ToolTip toolTip1;
         private ProgressBar DownloadProgressBar;
         private Label ProgessLabel;
         private Label VersionText;
+        private Label MenuButton;
+        private Panel SettingsPanel;
+        private Label AddDesktopShortcutTxt;
+        private Label OpenGameFilesTxt;
+        private Label VerifyGameFilesTxt;
     }
 }

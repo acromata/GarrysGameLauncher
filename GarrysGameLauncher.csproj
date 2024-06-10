@@ -10,6 +10,7 @@
     <Title>Garry's Game Launcher</Title>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageIcon>LOGO.png</PackageIcon>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <ItemGroup>
